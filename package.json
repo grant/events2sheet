@@ -1,0 +1,24 @@
+{
+  "name": "events2sheet",
+  "version": "1.0.0",
+  "description": "Log CloudEvents to a Google Sheet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grant/events2sheet.git"
+  },
+  "author": "Grant Timmerman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/grant/events2sheet/issues"
+  },
+  "homepage": "https://github.com/grant/events2sheet#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "googleapis": "^59.0.0"
+  }
+}
