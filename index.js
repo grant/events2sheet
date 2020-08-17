@@ -11,17 +11,17 @@ const handler = async (req, res) => {
 
   console.log(reply);
   await appendToSheet([
+    // Each value must be able to be converted into a string.
     'NEW EVENT',
     new Date(),
-    // reply.headers['ce-specversion'],
-    // reply.headers['ce-id'],
-    // reply.headers['ce-source'],
-    // reply.headers['ce-time'],
-    // reply.headers['ce-type'],
-    // reply.headers['ce-dataschema'],
-    // reply.headers['ce-subject'],
-    // reply.body,
-    // JSON.stringify(reply),
+    reply.headers['ce-specversion'],
+    reply.headers['ce-id'],
+    reply.headers['ce-source'],
+    reply.headers['ce-time'],
+    reply.headers['ce-type'],
+    reply.headers['ce-dataschema'],
+    reply.headers['ce-subject'],
+    JSON.stringify(reply.body), // Cannot directly add reply.body
   ]);
   console.log('==END HTTP REQ==');
   return res.status(200).send(reply);
@@ -29,10 +29,8 @@ const handler = async (req, res) => {
 
 const app = express();
 app.use(express.json());
+app.get('/health', (req, res) => res.send('health'));
 app.get('/', handler);
-// app.get('/', (req, res) => {
-//   res.send('good');
-// });
 app.post('/', handler);
 
 const PORT = process.env.PORT || 8080;
